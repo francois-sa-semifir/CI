@@ -20,14 +20,13 @@ jobs:
       runs-on: ubuntu-latest
       needs: [ulpoad]
       steps:
-        - name: dowload file
+        - name: download file
           # Récupération du fichier avec l'actions github
           uses: actions/download-artifact@v4
           # On lui précise le nom de l'artefact à récupérer
           # Si non précisé le nom par défaut est "artifact"
           with:
             name: artifact
-            path: artifact.txt
         - name: read file
           # Commande linux pour lire le contenu du fichier
           run: cat artifact.txt
