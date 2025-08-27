@@ -1,0 +1,17 @@
+name: Upload Artifact
+on: workflow_dispatch
+
+jobs:
+  ulpoad:
+    runs-on: ubuntu-latest
+    steps:
+      # création du fihcier
+      - name: create file
+        run: echo "Coucou" > artifact.txt
+      # upload du fichier
+      - name: upload
+        uses: actions/upload-artifact@v4
+      # On lui passe en param le nom du fichier à up et son path
+        with:
+          name: artifact
+          path: artifact.txt
