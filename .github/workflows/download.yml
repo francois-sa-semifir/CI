@@ -1,0 +1,33 @@
+name: Download Artifact
+on: workflow_dispatch
+
+jobs:
+  ulpoad:
+    runs-on: ubuntu-latest
+    steps:
+      # création du fihcier
+      - name: create file
+        run: echo "Salut" > artifact.txt
+      # upload du fichier
+      - name: upload
+        uses: actions/upload-artifact@v4
+      # On lui passe en param le nom du fichier à up et son path
+        with:
+          name: artifact
+          path: artifact.txt
+# Création d'un 2nd job pour récupérer le fichier qui aura été upload
+  download:
+      runs-on: ubuntu-latest
+      needs: [ulpoad]
+      steps:
+        - name: dowload file
+          # Récupération du fichier avec l'actions github
+          uses: actions/download-artifact@v4
+          # On lui précise le nom de l'artefact à récupérer
+          # Si non précisé le nom par défaut est "artifact"
+          with:
+            name: artifact
+            path: artifact.txt
+        - name: read file
+          # Commande linux pour lire le contenu du fichier
+          run: cat artifact.txt
