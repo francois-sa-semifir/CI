@@ -1,0 +1,11 @@
+name: nouvelle issue
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  new_issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: validation
+        run: echo "Issue correctement créée"
