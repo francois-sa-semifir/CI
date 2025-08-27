@@ -1,0 +1,15 @@
+name: Workflow Needs
+on: workflow_dispatch
+
+jobs:
+  manual_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "manual job"
+        run: echo "1er job lancé"
+  dependent_job:
+    runs-on: ubuntu-latest
+    needs: [manual_job]
+    steps:
+      - name: "dependent job"
+        run: echo "2nd job lancé"
