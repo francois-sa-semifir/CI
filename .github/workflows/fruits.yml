@@ -1,0 +1,20 @@
+name: fruits
+on: workflow_dispatch
+
+jobs:
+  Fruits:
+    # Définition de la stratégie
+    strategy:
+      # Permetre de tout arrêter en cas d'échec d'un job
+      fail-fast: true
+      # n'execute que 2 jobs en // à la fois
+      max-parallel: 2
+      matrix:
+        fruits: [Pomme, Poire, Pêche, Cerise]
+        personnes: [Geralt, Ashen One, Tarnished]
+    
+    # définition de l'ID du job
+    name: fruits/personnes
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{matrix.personnes}} mange un ${{matrix.fruits}}, et il est content :)"
