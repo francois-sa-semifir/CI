@@ -1,0 +1,12 @@
+name: Next
+on:
+  workflow_run:
+    workflows: [Merge PR]
+    types: [completed]
+
+jobs:
+  follow_up:
+    runs-on: ubuntu-latest
+    steps:
+      - name : "message"
+        run: echo "mettez ce que vous voulez :p"
