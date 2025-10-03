@@ -17,4 +17,4 @@ jobs:
     name: fruits/personnes
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{matrix.personnes}} mange un ${{matrix.fruits}}, et il est content :)"
+      - run: echo "${{matrix.personnes}} mange une ${{matrix.fruits}}, et il est content :)"
