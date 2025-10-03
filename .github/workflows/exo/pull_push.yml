@@ -13,8 +13,9 @@ env:
 jobs:
   # Job qui concerne les push
   push:
-    # Nul besoin de vérifier si c'est un push, puisque c'est forcément le cas
     runs-on: ubuntu-latest
+    # On vérifie si c'est une push avec une condition
+    if: ${{ github.event_name == 'push' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
